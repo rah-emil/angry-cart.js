@@ -19,7 +19,9 @@ class AngryCart {
 	__init(){
 		if( localStorage.getItem(angryCartKey) )
 		{
+
 			let angryCartData = JSON.parse(localStorage.getItem(angryCartKey)) ?? [];
+			console.log(angryCartData);
 			this.$counter.innerHTML = angryCartData.length;
 
 			this.__render(angryCartData);
@@ -53,16 +55,17 @@ class AngryCart {
 
 		this.__save(angryCartData);
 		this.$counter.innerHTML = angryCartData.length;
+		this.__render(angryCartData);
 	}
 
 	removeFromCart(product_id){
 		let angryCartData = JSON.parse(localStorage.getItem(angryCartKey)) ?? [],
-			existingProducts = angryCartData.find(product => product.product_id === product_id);
+			existingProducts = angryCartData.findIndex(product => product.product_id === product_id);
 
-		angryCartData.splice( existingProducts );
+		angryCartData.splice( existingProducts, 1 );
 
-		console.log(angryCartData);
-
+		this.__save(angryCartData);
+		this.$counter.innerHTML = angryCartData.length;
 		this.__render(angryCartData);
 	}
 
@@ -70,10 +73,6 @@ class AngryCart {
 		localStorage.setItem(angryCartKey, null);
 		this.$counter.innerHTML = 0;
 		this.$cartPreview.innerHTML = '';
-	}
-
-	getCart(){
-		console.log('Load products from cart');
 	}
 
 } 
