@@ -1,0 +1,8 @@
+/node_modules/
+/.bowerrc
+/.git/
+/app/libs/
+/**/_backstage
+/**/package-lock.json
+/**/Thumbs.db
+/**/*.DS_Store

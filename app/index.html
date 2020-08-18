@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angry-cart.js</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/angry-cart.min.css">
+</head>
+<body>
+	
+	
+	<div class="container">
+		<div class="row">
+
+			<div class="col-12 pt-5">
+				Корзина (<span id="cartCount">0</span>) <button class="btn btn-sm btn-danger" onclick="cart.clearCart()">Очистить</button>
+			</div>
+			<!-- /.col-12 -->
+
+			<div id="cartPreview"></div>
+			<!-- /#cartPreview -->
+			
+			<div class="col-md-2">
+				<div class="card mt-3">
+					<div class="card-body">
+						<h3>Банан</h3>
+						<button class="btn btn-sm btn-info" onclick="cart.addToCart(1)">В корзину</button>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col-md-2 -->
+			
+			<div class="col-md-2">
+				<div class="card mt-3">
+					<div class="card-body">
+						<h3>Яблоко</h3>
+						<button class="btn btn-sm btn-info" onclick="cart.addToCart(2)">В корзину</button>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col-md-2 -->
+			
+			<div class="col-md-2">
+				<div class="card mt-3">
+					<div class="card-body">
+						<h3>Ананас</h3>
+						<button class="btn btn-sm btn-info" onclick="cart.addToCart(3)">В корзину</button>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col-md-2 -->
+			
+			<div class="col-md-2">
+				<div class="card mt-3">
+					<div class="card-body">
+						<h3>Дыня</h3>
+						<button class="btn btn-sm btn-info" onclick="cart.addToCart(4)">В корзину</button>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			<!-- /.col-md-2 -->
+
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
+
+	<script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<script src="js/angry-cart.min.js"></script>
+
+	<script>
+		var ref = new Firebase('https://angry-cart.firebaseio.com/');
+
+		ref.on("value", function(snapshot) {
+			console.log(snapshot.val());
+		}, function (error) {
+			console.log("Error: " + error.code);
+		});
+
+		let cart = new AngryCart({
+			counter: '#cartCount',
+			cartPreview: '#cartPreview',
+		});
+	</script>
+
+</body>
+</html>

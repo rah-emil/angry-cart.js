@@ -1,0 +1,25 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Банан",
+            "price": 58.99,
+            "description": "Спелые бананы"
+        }, {
+            "id": 2,
+            "title": "Яблоко",
+            "price": 34.50,
+            "description": "Зелёные голден"
+        }, {
+            "id": 3,
+            "title": "Ананас",
+            "price": 289.99,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing"
+        }, {
+            "id": 4,
+            "title": "Дыня",
+            "price": 390.50,
+            "description": "Дыня из астрахани"
+        }
+    ]
+}
