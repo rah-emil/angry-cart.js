@@ -90,11 +90,13 @@
 		});
 
 		function angryCPR() {
-			let myCart = JSON.parse(localStorage.getItem(angryCartKey)),
+			let myCart = JSON.parse(localStorage.getItem(angryCartKey)), // "angryCartKey" - ключ корзины в localStorage (const)
 				renderBlock = document.getElementById('cartPreview');
 
+			/* Очищаем блок перед выводом */
 			renderBlock.innerHTML = '';
 
+			/* Выводим товары из корзины */
 			Array.from(myCart).forEach( function(product) {
 				renderBlock.insertAdjacentHTML('beforeEnd', `
 					<div class="d-flex">
