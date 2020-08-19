@@ -1,4 +1,4 @@
-![Angry Cart](https://raw.githubusercontent.com/rah-emil/angry-cart.js/master/app/img/header.png?token=AJVDNI2K7AJQ7BKWZ3HAGNS7HT26I "Angry Cart")
+![Angry Cart](https://raw.githubusercontent.com/rah-emil/angry-cart.js/master/app/img/header.png "Angry Cart")
 
 # Angry Cart
 [**СМОТРЕТЬ ДЕМО**](# "**СМОТРЕТЬ ДЕМО**")
