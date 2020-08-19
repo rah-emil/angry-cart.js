@@ -8,23 +8,13 @@ class AngryCart {
 		this.__init()
 	}
 
-	__render(angryCartData){
-		this.$cartPreview.innerHTML = '';
-
-		Array.from(angryCartData).forEach( (product) => {
-			this.$cartPreview.insertAdjacentHTML('beforeEnd', `<h6>*Имя товара*</h6><span>id: ${product.product_id}, кол-во: ${product.quantity}</span><button class="btn btn-sm btn-danger" onclick="cart.removeFromCart(${product.product_id})">x</button><hr/>`);
-		});
-	}
-
 	__init(){
 		if( localStorage.getItem(angryCartKey) )
 		{
-
 			let angryCartData = JSON.parse(localStorage.getItem(angryCartKey)) ?? [];
-			console.log(angryCartData);
 			this.$counter.innerHTML = angryCartData.length;
 
-			this.__render(angryCartData);
+			this.render(angryCartData);
 		}
 		else
 		{
@@ -34,7 +24,14 @@ class AngryCart {
 
 	__save(angryCartData){
 		localStorage.setItem(angryCartKey, JSON.stringify(angryCartData));
-		console.log(angryCartData);
+	}
+
+	render(angryCartData){
+		this.$cartPreview.innerHTML = '';
+
+		Array.from(angryCartData ?? []).forEach( (product) => {
+			this.$cartPreview.insertAdjacentHTML('beforeEnd', `<h6>*Имя товара*</h6><span>id: ${product.product_id}, кол-во: ${product.quantity}</span><button class="btn btn-sm btn-danger" onclick="cart.removeFromCart(${product.product_id})">x</button><hr/>`);
+		});
 	}
 
 	addToCart(product_id){
@@ -55,7 +52,7 @@ class AngryCart {
 
 		this.__save(angryCartData);
 		this.$counter.innerHTML = angryCartData.length;
-		this.__render(angryCartData);
+		this.render(angryCartData);
 	}
 
 	removeFromCart(product_id){
@@ -66,7 +63,7 @@ class AngryCart {
 
 		this.__save(angryCartData);
 		this.$counter.innerHTML = angryCartData.length;
-		this.__render(angryCartData);
+		this.render(angryCartData);
 	}
 
 	clearCart(){
@@ -75,4 +72,4 @@ class AngryCart {
 		this.$cartPreview.innerHTML = '';
 	}
 
-} 
+}

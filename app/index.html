@@ -78,18 +78,14 @@
 	<script src="js/angry-cart.min.js"></script>
 
 	<script>
-		var ref = new Firebase('https://angry-cart.firebaseio.com/');
-
-		ref.on("value", function(snapshot) {
-			console.log(snapshot.val());
-		}, function (error) {
-			console.log("Error: " + error.code);
-		});
 
 		let cart = new AngryCart({
 			counter: '#cartCount',
 			cartPreview: '#cartPreview',
 		});
+
+		let ref = new Firebase('https://angry-cart.firebaseio.com/products');
+
 	</script>
 
 </body>
