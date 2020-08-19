@@ -10,64 +10,69 @@
 <body>
 	
 	
-	<div class="container">
+	<div class="container pb-5">
 		<div class="row">
 
-			<div class="col-12 pt-5">
-				Корзина (<span id="cartCount">0</span>) <button class="btn btn-sm btn-danger" onclick="cart.clearCart()">Очистить</button>
+			<div class="col-12 pt-5 pb-5">
+				Корзина на сумму <span id="totalPrice">0</span> руб (<span id="cartCount">0</span>) <button class="btn btn-sm btn-danger" onclick="cart.clearCart()">Очистить</button>
 			</div>
 			<!-- /.col-12 -->
 
-			<div id="cartPreview"></div>
+			<div id="cartPreview" class="pb-5"></div>
 			<!-- /#cartPreview -->
 			
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<div class="card mt-3">
 					<div class="card-body">
-						<h3>Банан</h3>
-						<button class="btn btn-sm btn-info" onclick="cart.addToCart(1)">В корзину</button>
+						<img src="https://www.turksandcaicosgrocerydelivery.com/wp-content/uploads/2017/08/Bananas-1LB.png" alt="">
+						<h3>Банан <span class="h3 text-warning">48.99 <sub>руб</sub></span></h3>
+
+						<button class="btn btn-sm btn-info mt-4" onclick="cart.addToCart(1, {title: 'Банан', price: 48.99, image: 'https://www.turksandcaicosgrocerydelivery.com/wp-content/uploads/2017/08/Bananas-1LB.png'})">В корзину</button>
 					</div>
 					<!-- /.card-body -->
 				</div>
 				<!-- /.card -->
 			</div>
-			<!-- /.col-md-2 -->
+			<!-- /.col-md-4 -->
 			
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<div class="card mt-3">
 					<div class="card-body">
-						<h3>Яблоко</h3>
-						<button class="btn btn-sm btn-info" onclick="cart.addToCart(2)">В корзину</button>
+						<img src="https://image.jimcdn.com/app/cms/image/transf/dimension=337x1024:format=png/path/sd19ee58a1a559d24/image/i16f475499360e5b4/version/1452489371/image.png" alt="">
+						<h3>Яблоко <span class="h3 text-warning">52.49 <sub>руб</sub></span></h3>
+						<button class="btn btn-sm btn-info mt-4" onclick="cart.addToCart(2, {title: 'Яблоко', price: 52.49, image: 'https://image.jimcdn.com/app/cms/image/transf/dimension=337x1024:format=png/path/sd19ee58a1a559d24/image/i16f475499360e5b4/version/1452489371/image.png'})">В корзину</button>
 					</div>
 					<!-- /.card-body -->
 				</div>
 				<!-- /.card -->
 			</div>
-			<!-- /.col-md-2 -->
+			<!-- /.col-md-4 -->
 			
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<div class="card mt-3">
 					<div class="card-body">
-						<h3>Ананас</h3>
-						<button class="btn btn-sm btn-info" onclick="cart.addToCart(3)">В корзину</button>
+						<img src="http://www.crosswaver.org/wp-content/uploads/2015/06/pineapple_2-e1434421093253.png" alt="">
+						<h3>Ананас <span class="h3 text-warning">200 <sub>руб</sub></span></h3>
+						<button class="btn btn-sm btn-info mt-4" onclick="cart.addToCart(3, {title: 'Ананас', price: 200, image: 'http://www.crosswaver.org/wp-content/uploads/2015/06/pineapple_2-e1434421093253.png'})">В корзину</button>
 					</div>
 					<!-- /.card-body -->
 				</div>
 				<!-- /.card -->
 			</div>
-			<!-- /.col-md-2 -->
+			<!-- /.col-md-4 -->
 			
-			<div class="col-md-2">
+			<div class="col-md-4">
 				<div class="card mt-3">
 					<div class="card-body">
-						<h3>Дыня</h3>
-						<button class="btn btn-sm btn-info" onclick="cart.addToCart(4)">В корзину</button>
+						<img src="https://imgcdn.wangyeyixia.com/aHR0cDovL3BuZ2ltZy5jb20vdXBsb2Fkcy9tZWxvbi9tZWxvbl9QTkcxNDM2NC5wbmc%3D.png?w=230" alt="">
+						<h3>Дыня <span class="h3 text-warning">180 <sub>руб</sub></span></h3>
+						<button class="btn btn-sm btn-info mt-4" onclick="cart.addToCart(4, {title: 'Дыня', price: 180, image: 'https://imgcdn.wangyeyixia.com/aHR0cDovL3BuZ2ltZy5jb20vdXBsb2Fkcy9tZWxvbi9tZWxvbl9QTkcxNDM2NC5wbmc%3D.png?w=230'})">В корзину</button>
 					</div>
 					<!-- /.card-body -->
 				</div>
 				<!-- /.card -->
 			</div>
-			<!-- /.col-md-2 -->
+			<!-- /.col-md-4 -->
 
 		</div>
 		<!-- /.row -->
@@ -81,10 +86,24 @@
 
 		let cart = new AngryCart({
 			counter: '#cartCount',
-			cartPreview: '#cartPreview',
+			totalPrice: '#totalPrice',
 		});
 
-		let ref = new Firebase('https://angry-cart.firebaseio.com/products');
+		function angryCPR() {
+			let myCart = JSON.parse(localStorage.getItem(angryCartKey)),
+				renderBlock = document.getElementById('cartPreview');
+
+			renderBlock.innerHTML = '';
+
+			Array.from(myCart).forEach( function(product) {
+				renderBlock.insertAdjacentHTML('beforeEnd', `
+					<div class="d-flex">
+						<h5><strong>${product.data.title}</strong> <span class="text-muted">x ${product.quantity}</span> - <span class="text-warning">${product.data.price} руб</span></h5>
+						<button class="btn btn-sm btn-outline-danger ml-3" onclick="cart.removeFromCart(${product.product_id})">x</button>
+					</div>
+				`);
+			});
+		}
 
 	</script>
 
