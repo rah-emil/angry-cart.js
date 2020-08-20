@@ -1,7 +1,7 @@
 ![Angry Cart](https://raw.githubusercontent.com/rah-emil/angry-cart.js/master/app/img/header.png "Angry Cart")
 
 # Angry Cart
-[**СМОТРЕТЬ ДЕМО**](https://codepen.io/emchik17/pen/WNwGpKx "**СМОТРЕТЬ ДЕМО**") .
+[**СМОТРЕТЬ ДЕМО**](https://cdn.rah-emil.ru/angry-cart.js/demo/ "**СМОТРЕТЬ ДЕМО**") .
 Плагин для создания корзины товаров на чистом JavaScript. Никакие дополнительные плагины для работы не потребуются. Допустимо использование вместе с jQuery.
 
 ### Что умеет плагин?
