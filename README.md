@@ -2,8 +2,10 @@
 
 # Angry Cart
 [![GitHub license](https://img.shields.io/github/license/rah-emil/angry-cart.js)](https://github.com/rah-emil/angry-cart.js/blob/master/LICENSE)
+![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-brightgreen "Open Source")
 
 [**VIEW DEMO**](https://cdn.rah-emil.ru/angry-cart.js/demo/ "**СМОТРЕТЬ ДЕМО**") .
+
 A plugin for creating a shopping cart in pure JavaScript. No additional plugins are required to work. Can be used with jQuery.
 
 ### What does the plugin do?
