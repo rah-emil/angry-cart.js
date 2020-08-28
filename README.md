@@ -1,6 +1,7 @@
 ![Angry Cart](https://raw.githubusercontent.com/rah-emil/angry-cart.js/master/app/img/header.png "Angry Cart")
 
 # Angry Cart
+[![GitHub license](https://img.shields.io/github/license/rah-emil/angry-cart.js)](https://github.com/rah-emil/angry-cart.js/blob/master/LICENSE)
 [**VIEW DEMO**](https://cdn.rah-emil.ru/angry-cart.js/demo/ "**СМОТРЕТЬ ДЕМО**") .
 A plugin for creating a shopping cart in pure JavaScript. No additional plugins are required to work. Can be used with jQuery.
 
