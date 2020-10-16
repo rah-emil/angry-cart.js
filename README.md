@@ -20,6 +20,8 @@ A plugin for creating a shopping cart in pure JavaScript. No additional plugins 
 ------------
 
 ### How to use?
+`npm i angry-cart.js`
+**or**
 To work with the plugin, you need to connect only 1 file => [`angry-cart.min.js`](https://github.com/rah-emil/angry-cart.js/blob/master/app/js/angry-cart.min.js "`angry-cart.min.js`")
 
 **1. Plugin initialization:** 

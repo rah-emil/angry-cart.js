@@ -20,6 +20,8 @@
 ------------
 
 ### Как использовать?
+`npm i angry-cart.js`
+**или**
 Для работы с плагином необходимо подключить всего 1 файл => [`angry-cart.min.js`](https://github.com/rah-emil/angry-cart.js/blob/master/app/js/angry-cart.min.js "`angry-cart.min.js`")
 
 **1. Инициализируем плагин:** 
